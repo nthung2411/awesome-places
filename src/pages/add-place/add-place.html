@@ -1,0 +1,55 @@
+<ion-header>
+
+  <ion-navbar>
+    <ion-title>Add a Place</ion-title>
+  </ion-navbar>
+
+</ion-header>
+
+
+<ion-content padding>
+  <form>
+    <ion-list>
+      <ion-item>
+        <ion-label fixed>Title</ion-label>
+        <ion-input type="text"
+          placeholder="Beatiful church..."
+          name="title"
+          ngModel
+          required></ion-input>
+      </ion-item>
+      <ion-item>
+        <ion-label fixed>Description</ion-label>
+        <ion-textarea name="description"
+          ngModel
+          required></ion-textarea>
+      </ion-item>
+    </ion-list>
+    <ion-grid>
+      <ion-row>
+        <ion-col col-6>
+          <button ion-button
+            block
+            outline
+            type="button"
+            icon-left
+            (click)="onLocate()">
+          <ion-icon name="locate"></ion-icon>
+          Locate me
+          </button>
+        </ion-col>
+        <ion-col col-6>
+          <button ion-button
+            block
+            outline
+            type="button"
+            icon-left
+            (click)="onOpenMap()">
+          <ion-icon name="map"></ion-icon>
+          Select on Map
+          </button>
+        </ion-col>
+      </ion-row>
+    </ion-grid>
+  </form>
+</ion-content>
