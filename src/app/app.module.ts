@@ -10,6 +10,7 @@ import { HomePage } from '../pages/home/home'
 
 import { StatusBar } from '@ionic-native/status-bar'
 import { SplashScreen } from '@ionic-native/splash-screen'
+import { AgmCoreModule } from '@agm/core';
 
 const pages = [
   MyApp,
@@ -23,7 +24,10 @@ const pages = [
   declarations: pages,
   imports: [
     BrowserModule,
-    IonicModule.forRoot(MyApp)
+    IonicModule.forRoot(MyApp),
+    AgmCoreModule.forRoot({
+      apiKey: 'AIzaSyBHPKxfbPSHURl-SVRy-nFbqj7LoU1pLDE'
+    })
   ],
   bootstrap: [IonicApp],
   entryComponents: pages,

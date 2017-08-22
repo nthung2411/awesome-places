@@ -6,7 +6,8 @@ import { IonicPage, NavController, NavParams } from 'ionic-angular';
   templateUrl: 'set-location.html',
 })
 export class SetLocationPage {
-
+  lat = 51.678418;
+  lng = 7.809007;
   constructor(public navCtrl: NavController, public navParams: NavParams) {
   }
 
