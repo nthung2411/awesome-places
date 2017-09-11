@@ -51,9 +51,14 @@
             </button>
         </ion-col>
       </ion-row>
-      <ion-row>
+      <ion-row *ngIf="this.locationIsSet">
         <ion-col>
-          <p>Selected Place ...</p>
+          <agm-map [latitude]="location.lattitude"
+            [longitude]="location.longtitude"
+            [zoom]="16">
+            <agm-marker [latitude]="location.lattitude"
+              [longitude]="location.longtitude"></agm-marker>
+          </agm-map>
         </ion-col>
       </ion-row>
       <ion-row>
@@ -89,7 +94,7 @@
             type="submit"
             icon-left
             color="secondary"
-            [disabled]="!f.valid">
+            [disabled]="!f.valid && !locationIsSet">
               Add this Place
             </button>
         </ion-col>

@@ -9,10 +9,11 @@ import { NavController, ModalController } from 'ionic-angular';
   templateUrl: 'add-place.html',
 })
 export class AddPlacePage {
-  location: Location = <Location>{
+  public location: Location = <Location>{
     lattitude: 10.8231,
     longtitude: 106.6297
   };
+  public locationIsSet = false;
   constructor(public navCtrl: NavController,
     private modalCtrl: ModalController) {
   }
@@ -22,8 +23,14 @@ export class AddPlacePage {
   }
 
   public onOpenMap() {
-    const modal = this.modalCtrl.create(SetLocationPage, { location: this.location });
+    const modal = this.modalCtrl.create(SetLocationPage,
+      { location: this.location, isSet: this.locationIsSet });
     modal.present();
+    modal.onDidDismiss((data) => {
+      if (!data) { return; }
+      this.locationIsSet = true;
+      this.location = data.location;
+    });
   }
 
   public onSubmit(form: NgForm) {
