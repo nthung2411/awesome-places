@@ -12,6 +12,8 @@ import { StatusBar } from '@ionic-native/status-bar'
 import { SplashScreen } from '@ionic-native/splash-screen'
 import { AgmCoreModule } from '@agm/core';
 
+import { Geolocation } from '@ionic-native/geolocation';
+
 const pages = [
   MyApp,
   HomePage,
@@ -34,6 +36,7 @@ const pages = [
   providers: [
     StatusBar,
     SplashScreen,
+    Geolocation,
     { provide: ErrorHandler, useClass: IonicErrorHandler }
   ]
 })
