@@ -68,24 +68,8 @@
           </h5>
         </ion-col>
       </ion-row>
-      <ion-row>
-        <ion-col>
-          <button ion-button
-            block
-            outline
-            type="button"
-            icon-left
-            (click)="onTakePhoto()">
-          <ion-icon name="camera"></ion-icon>
-          Open the camera
-          </button>
-        </ion-col>
-      </ion-row>
-      <ion-row>
-        <ion-col>
-          <img [src]="imageUrl">
-        </ion-col>
-      </ion-row>
+      <camera-component [imageUrl]="imageUrl">
+      </camera-component>
       <ion-row>
         <ion-col>
           <button ion-button

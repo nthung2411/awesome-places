@@ -4,7 +4,7 @@ import { SetLocationPage } from '../set-location/set-location';
 import { Component } from '@angular/core';
 import { ModalController, NavController, ToastController, LoadingController } from 'ionic-angular';
 import { Geolocation } from '@ionic-native/geolocation';
-import { Camera, CameraOptions } from '@ionic-native/camera';
+
 
 @Component({
   selector: 'page-add-place',
@@ -22,8 +22,7 @@ export class AddPlacePage {
     private loadingCtrl: LoadingController,
     private toastCtrl: ToastController,
 
-    private geolocation: Geolocation,
-    private camera: Camera) {
+    private geolocation: Geolocation) {
   }
 
   public onOpenMap() {
@@ -61,19 +60,5 @@ export class AddPlacePage {
       toast.present();
       loader.dismiss();
     });
-  }
-
-  public onTakePhoto() {
-    const options: CameraOptions = {
-      quality: 100,
-      encodingType: this.camera.EncodingType.PNG
-    };
-    this.camera.getPicture(options)
-      .then(res => {
-        this.imageUrl = res;
-      })
-      .catch(error => {
-        console.log(error);
-      });
   }
 }

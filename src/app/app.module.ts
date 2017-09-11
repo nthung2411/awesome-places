@@ -1,3 +1,4 @@
+import { CameraComponent } from '../pages/camera/camera';
 import { SetLocationPage } from '../pages/set-location/set-location';
 import { PlacePage } from '../pages/place/place';
 import { AddPlacePage } from '../pages/add-place/add-place';
@@ -20,7 +21,9 @@ const pages = [
   HomePage,
   AddPlacePage,
   PlacePage,
-  SetLocationPage
+  SetLocationPage,
+
+  CameraComponent
 ]
 
 @NgModule({
