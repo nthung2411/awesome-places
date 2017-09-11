@@ -54,10 +54,10 @@
       <ion-row *ngIf="this.locationIsSet">
         <ion-col>
           <agm-map [latitude]="location.lattitude"
-            [longitude]="location.longtitude"
+            [longitude]="location.longitude"
             [zoom]="16">
             <agm-marker [latitude]="location.lattitude"
-              [longitude]="location.longtitude"></agm-marker>
+              [longitude]="location.longitude"></agm-marker>
           </agm-map>
         </ion-col>
       </ion-row>
