@@ -8,7 +8,7 @@ import { NavController } from 'ionic-angular'
   selector: 'page-home',
   templateUrl: 'home.html'
 })
-export class HomePage implements OnInit {
+export class HomePage {
   addPlacePage = AddPlacePage;
   places: Place[] = [];
 
@@ -16,7 +16,11 @@ export class HomePage implements OnInit {
 
   }
 
-  public ngOnInit(): void {
+  public ionViewWillEnter() {
+    this.places = this.placeService.loadPlaces();
+  }
+
+  public onRefresh() {
     this.places = this.placeService.loadPlaces();
   }
 }
