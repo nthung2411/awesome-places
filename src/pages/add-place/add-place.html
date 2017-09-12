@@ -23,7 +23,8 @@
         <ion-label fixed>Description</ion-label>
         <ion-textarea name="description"
           ngModel
-          required></ion-textarea>
+          required
+          [attr.rows]="4"></ion-textarea>
       </ion-item>
     </ion-list>
     <ion-grid>
@@ -68,8 +69,14 @@
           </h5>
         </ion-col>
       </ion-row>
-      <camera-component [imageUrl]="imageUrl">
+      <camera-component [imageUrl]="imageUrl"
+        (onPhotoTaken)="getImageUrl($event)">
       </camera-component>
+      <ion-row>
+        <ion-col>
+          <p>this is {{imageUrl}}</p>
+        </ion-col>
+      </ion-row>
       <ion-row>
         <ion-col>
           <button ion-button
@@ -78,7 +85,7 @@
             type="submit"
             icon-left
             color="secondary"
-            [disabled]="!f.valid && !locationIsSet">
+            [disabled]="!f.valid || !locationIsSet || imageUrl===''">
               Add this Place
             </button>
         </ion-col>

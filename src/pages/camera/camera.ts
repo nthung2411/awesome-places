@@ -1,5 +1,5 @@
 import { ToastController } from 'ionic-angular';
-import { Component, Input } from '@angular/core';
+import { Component, EventEmitter, Input, Output } from '@angular/core';
 import { Camera, CameraOptions } from '@ionic-native/camera';
 
 @Component({
@@ -9,7 +9,7 @@ import { Camera, CameraOptions } from '@ionic-native/camera';
 
 export class CameraComponent {
     @Input() imageUrl: string;
-
+    @Output() onPhotoTaken: EventEmitter<string> = new EventEmitter<string>();
     constructor(private camera: Camera,
         private toastCtrl: ToastController) {
     }
@@ -24,6 +24,7 @@ export class CameraComponent {
         this.camera.getPicture(options)
             .then(res => {
                 this.imageUrl = res;
+                this.onPhotoTaken.emit(this.imageUrl);
             })
             .catch(error => {
                 const toast = this.toastCtrl.create({

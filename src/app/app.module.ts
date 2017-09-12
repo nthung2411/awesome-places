@@ -1,3 +1,4 @@
+import { PlaceService } from '../services/place.service';
 import { CameraComponent } from '../pages/camera/camera';
 import { SetLocationPage } from '../pages/set-location/set-location';
 import { PlacePage } from '../pages/place/place';
@@ -42,6 +43,9 @@ const pages = [
     SplashScreen,
     Geolocation,
     Camera,
+
+    PlaceService,
+
     { provide: ErrorHandler, useClass: IonicErrorHandler }
   ]
 })

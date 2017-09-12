@@ -1,3 +1,4 @@
+import { PlaceService } from '../../services/place.service';
 import { Location } from '../../models/location.model';
 import { NgForm } from '@angular/forms';
 import { SetLocationPage } from '../set-location/set-location';
@@ -22,7 +23,8 @@ export class AddPlacePage {
     private loadingCtrl: LoadingController,
     private toastCtrl: ToastController,
 
-    private geolocation: Geolocation) {
+    private geolocation: Geolocation,
+    private placeService: PlaceService) {
   }
 
   public onOpenMap() {
@@ -38,6 +40,15 @@ export class AddPlacePage {
 
   public onSubmit(form: NgForm) {
     console.log(form.value);
+    this.placeService.addPlace(form.value.title, form.value.description, this.location, this.imageUrl);
+
+    form.reset();
+    this.location = <Location>{
+      lattitude: 10.8231,
+      longitude: 106.6297
+    };
+    this.locationIsSet = false;
+    this.imageUrl = '';
   }
 
   public onLocate() {
@@ -60,5 +71,9 @@ export class AddPlacePage {
       toast.present();
       loader.dismiss();
     });
+  }
+
+  public getImageUrl(imageUrl: string) {
+    this.imageUrl = imageUrl;
   }
 }
