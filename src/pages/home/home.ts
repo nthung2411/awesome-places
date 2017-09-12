@@ -1,3 +1,4 @@
+import { PlacePage } from '../place/place';
 import { PlaceService } from '../../services/place.service';
 import { Place } from '../../models/place.model';
 import { AddPlacePage } from '../add-place/add-place'
@@ -22,5 +23,12 @@ export class HomePage {
 
   public onRefresh() {
     this.places = this.placeService.loadPlaces();
+  }
+
+  public onOpenPlace(place: Place, index: number) {
+    this.navCtrl.push(PlacePage, {
+      place: place,
+      index: index
+    });
   }
 }
