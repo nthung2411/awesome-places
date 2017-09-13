@@ -9,11 +9,13 @@ import { NavController } from 'ionic-angular'
   selector: 'page-home',
   templateUrl: 'home.html'
 })
-export class HomePage {
+export class HomePage implements OnInit {
   addPlacePage = AddPlacePage;
   places: Place[] = [];
 
-  constructor(public navCtrl: NavController, private placeService: PlaceService) {
+  constructor(
+    private navCtrl: NavController,
+    private placeService: PlaceService) {
 
   }
 
@@ -30,5 +32,9 @@ export class HomePage {
       place: place,
       index: index
     });
+  }
+
+  public ngOnInit(): void {
+    this.placeService.fetchPlaces();
   }
 }

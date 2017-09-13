@@ -1,3 +1,4 @@
+import { Storage, IonicStorageModule } from '@ionic/storage';
 import { PlaceService } from '../services/place.service';
 import { CameraComponent } from '../pages/camera/camera';
 import { SetLocationPage } from '../pages/set-location/set-location';
@@ -16,6 +17,7 @@ import { AgmCoreModule } from '@agm/core';
 
 import { Geolocation } from '@ionic-native/geolocation';
 import { Camera } from '@ionic-native/camera';
+import { File } from '@ionic-native/file';
 
 const pages = [
   MyApp,
@@ -34,7 +36,8 @@ const pages = [
     IonicModule.forRoot(MyApp),
     AgmCoreModule.forRoot({
       apiKey: 'AIzaSyBHPKxfbPSHURl-SVRy-nFbqj7LoU1pLDE'
-    })
+    }),
+    IonicStorageModule.forRoot()
   ],
   bootstrap: [IonicApp],
   entryComponents: pages,
@@ -43,7 +46,7 @@ const pages = [
     SplashScreen,
     Geolocation,
     Camera,
-
+    File,
     PlaceService,
 
     { provide: ErrorHandler, useClass: IonicErrorHandler }
